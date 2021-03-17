@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])
       log_in user #sessions_helperでloginメソッドを定義している
+      remember user
       redirect_to user
     else
       flash.now[:danger] = 'Invalid email/password combination'
