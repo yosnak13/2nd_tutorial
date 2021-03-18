@@ -10,11 +10,12 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   class << self
-  # 渡された文字列のハッシュ値を返す
-  def digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
+    # 渡された文字列のハッシュ値を返す
+    def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                    BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+    end
   end
 
   # ランダムなトークンを返す
