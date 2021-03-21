@@ -22,9 +22,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def upadate
+  def update
     @user = User.find(params[:id])
-    if @user.upadate_attributes(user_params)
+    if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
     else
