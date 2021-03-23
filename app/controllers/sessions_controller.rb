@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(params[:email].downcase)
+    user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])
       log_in user #sessions_helperでloginメソッドを定義している
       params[:remember_me] == '1' ? remember(user) : forget(user)
@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
   def destroy
     log_out if logged_in?
     redirect_to root_url
-    
+
   end
 end
