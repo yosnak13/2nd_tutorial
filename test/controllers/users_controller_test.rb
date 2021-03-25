@@ -26,6 +26,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                     user: { password:              foobar,
                                             password_confirmation: foobar,
                                             admin: false } }
-    assert_not @other_user.params.admin?
+    assert_not @other_user.not.admin?
   end
 end
